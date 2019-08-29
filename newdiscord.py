@@ -1,5 +1,6 @@
 import discord
 import openpyxl
+import os
 from discord import message
 
 client = discord.Client()
@@ -131,4 +132,6 @@ async def on_ready():
         if message.content.startswith("사나봇 켜졌습니다"):
             await message.channel.send("&채널메시지 616218241446051845 사나봇 켜졌습니다")
 
-client.run('NjA5NjQyMzczOTIzODY0NTg2.XWerzA.uXp3BWTszIoizxGdwXhbDvYDouI')
+            
+access_token = os.environ["BOT TOKEN"]            
+client.run(access_token)
