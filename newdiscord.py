@@ -1,5 +1,4 @@
 import discord
-import openpyxl
 import os
 from discord import message
 
@@ -99,39 +98,6 @@ async def on_message(message):
         role = discord.utils.get(message.guild.roles, name="뮤트")
         await author.remove_roles(role)
 
-
-        if message.content.startswith(""):
-            file = openpyxl.load_workbook("레벨.xlsx")
-            sheet = file.active
-            exp = [10, 20, 30, 40, 50, 60, 80, 110, 130, 160, 200, 250, 400, 600, 800, 1000, 1500, 2000 ]
-            i = 1
-            while True:
-                if sheet ["A" + str(i)].value == str(message.author.id):
-                    sheet ["B" + str(i)].value == ["B" + str(i)].value + 18
-                    if sheet ["B" + str(i)].value >= exp[sheet["C" + str(i)].value - 1]:
-                        sheet ["C" + str(i)].value = sheet["C" + str(i)].value + 1
-                        await message.channel.send("레벨이 올랐습니다.Wn현재 레벨 : " + str(sheet["C" + str(i)].value) + "Wn경험치 : " + str(sheet["B" + str(i)].value))
-                    file.save("레벨.xlsx")
-                    break
-
-                if sheet ["A" + str(i)].value == None:
-                    sheet["A" + str(i)].value = str(message.author.id)
-                    sheet["A" + str(i)].value = 0
-                    sheet["A" + str(i)].value = 1
-                    break
-
-import discord
-
-@client.event
-async def on_ready():
-
-    print(client.user.id)
-    print("사나봇 켜졌습니다")
-    async def on_message(message):
-
-        if message.content.startswith("사나봇 켜졌습니다"):
-            await message.channel.send("&채널메시지 616218241446051845 사나봇 켜졌습니다")
-
-            
+         
 access_token = os.environ["BOT TOKEN"]            
 client.run(access_token)
